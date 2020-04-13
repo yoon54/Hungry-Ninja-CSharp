@@ -7,17 +7,21 @@ namespace Hungry_Ninjas
     {
         static void Main(string[] args)
         {
-            Ninja James = new Ninja();
-            Buffet AllYouCanEat = new Buffet();
-            var food = AllYouCanEat.Serve();
-            James.Eat(food);
-             var food1 = AllYouCanEat.Serve();
-            James.Eat(food1);
-             var food2 = AllYouCanEat.Serve();
-            James.Eat(food2);
-             var food3 = AllYouCanEat.Serve();
-            James.Eat(food3);
-            James.ShowStats();
+            Buffet buffet = new Buffet();
+
+            SweetTooth SweetNinja = new SweetTooth();
+            SpiceHound SpicyNinja = new SpiceHound();
+            while(SweetNinja.IsFull == false)
+            {
+                SweetNinja.Consume(buffet.Serve());
+            }
+            Console.WriteLine($"Sweet ninja had total {SweetNinja.ConsumptionHistory.Count} food!");
+            while(SpicyNinja.IsFull == false)
+            {
+                SpicyNinja.Consume(buffet.Serve());
+                Console.WriteLine(SpicyNinja.ConsumptionHistory.Count);
+            }
+            Console.WriteLine($"Spicy ninja had total {SpicyNinja.ConsumptionHistory.Count} food!");
         }
     }
 }
